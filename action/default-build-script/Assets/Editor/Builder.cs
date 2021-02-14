@@ -1,10 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using UnityBuilderAction.Input;
 using UnityBuilderAction.Reporting;
 using UnityBuilderAction.Versioning;
 using UnityEditor;
+using UnityEditor.AddressableAssets;
+using UnityEditor.AddressableAssets.Settings;
 using UnityEditor.Build.Reporting;
 
 namespace UnityBuilderAction
@@ -36,9 +37,14 @@ namespace UnityBuilderAction
         options = buildOptions
       };
 
+      // Make clean build for AddressableAsset 
+      AddressableAssetSettings.CleanPlayerContent(
+        AddressableAssetSettingsDefaultObject.Settings.ActivePlayerDataBuilder);
+      AddressableAssetSettings.BuildPlayerContent();
+      
       // Set version for this build
       VersionApplicator.SetVersion(options["buildVersion"]);
-      VersionApplicator.SetAndroidVersionCode(options["androidVersionCode"]);
+      VersionApplicator.SetBuildNumber(options["androidVersionCode"]);
       
       // Apply Android settings
       if (buildPlayerOptions.target == BuildTarget.Android)

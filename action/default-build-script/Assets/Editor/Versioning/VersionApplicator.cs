@@ -14,8 +14,9 @@ namespace UnityBuilderAction.Versioning
       Apply(version);
     }
 
-    public static void SetAndroidVersionCode(string androidVersionCode) {
-      PlayerSettings.Android.bundleVersionCode = Int32.Parse(androidVersionCode);
+    public static void SetBuildNumber(string versionCode) {
+      PlayerSettings.Android.bundleVersionCode = Int32.Parse(versionCode);
+      PlayerSettings.iOS.buildNumber = versionCode;
     }
 
     static void Apply(string version)
