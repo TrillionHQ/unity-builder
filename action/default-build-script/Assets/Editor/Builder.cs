@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using UnityBuilderAction.Input;
 using UnityBuilderAction.Reporting;
@@ -37,9 +37,8 @@ namespace UnityBuilderAction
         options = buildOptions
       };
 
-      // Make clean build for AddressableAsset 
-      AddressableAssetSettings.CleanPlayerContent(
-        AddressableAssetSettingsDefaultObject.Settings.ActivePlayerDataBuilder);
+      // Make build for AddressableAsset 
+      AddressableAssetSettingsDefaultObject.Settings.ActivePlayerDataBuilderIndex = 4;
       AddressableAssetSettings.BuildPlayerContent();
       
       // Set version for this build
