@@ -36,11 +36,6 @@ namespace UnityBuilderAction
         target = (BuildTarget) Enum.Parse(typeof(BuildTarget), options["buildTarget"]),
         options = buildOptions
       };
-
-      // Make clean build for AddressableAsset 
-      AddressableAssetSettings.CleanPlayerContent(
-        AddressableAssetSettingsDefaultObject.Settings.ActivePlayerDataBuilder);
-      AddressableAssetSettings.BuildPlayerContent();
       
       // Set version for this build
       VersionApplicator.SetVersion(options["buildVersion"]);
