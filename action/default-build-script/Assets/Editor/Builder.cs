@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using Editor.AME;
 using UnityBuilderAction.Input;
 using UnityBuilderAction.Reporting;
 using UnityBuilderAction.Versioning;
@@ -13,7 +12,7 @@ namespace UnityBuilderAction
 {
   static class Builder
   {
-    public static async void BuildProject()
+    public static void BuildProject()
     {
       // Gather values from args
       var options = ArgumentsParser.GetValidatedOptions();
@@ -41,9 +40,6 @@ namespace UnityBuilderAction
       // Make build for AddressableAsset 
       AddressableAssetSettingsDefaultObject.Settings.ActivePlayerDataBuilderIndex = 4;
       AddressableAssetSettings.BuildPlayerContent();
-      
-      //upload fo tirebase
-      await UploadAddressablesToFirebaseMenuItem.UploadAddressablesToFirebase();
       
       // Set version for this build
       VersionApplicator.SetVersion(options["buildVersion"]);
